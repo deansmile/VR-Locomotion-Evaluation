@@ -15,18 +15,20 @@ def get_file_paths(directory, exclude_files=None):
             if file not in exclude_files:
                 # Join the two strings to form the full filepath.
                 file_path = os.path.join(root, file)
-                file_paths.append(file_path)
+                file_paths.append(file)
     
     return file_paths
 
 # Specify the directory path
-directory_path = 'ExtractedFeatures_1s'
+directory_path = "E:\\SEED Dataset\\ExtractedFeatures_1s\\ExtractedFeatures_1s"
 
 # List of file names to exclude
 excluded_files = ['label.mat', 'readme.txt']
 
 # Get all file paths, excluding specific files
 all_file_paths = get_file_paths(directory_path, exclude_files=excluded_files)
+print(all_file_paths)
+exit()
 de=[]
 labels=[]
 label=[1,0,-1,-1,0,1,-1,0,1,1,0,-1,0,1,-1]
@@ -38,7 +40,7 @@ for fp in all_file_paths:
     labels.extend(label)
 
 import h5py
-with h5py.File('data_3.h5', 'w') as f:
+with h5py.File('data_5.h5', 'w') as f:
     # Create a group for DE arrays
     DE_group = f.create_group('DE')
     
